@@ -1,0 +1,184 @@
+/* Base Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-family: 'Poppins', sans-serif;
+  color: #f0f0f0;
+}
+
+body {
+  background: linear-gradient(to bottom right, #1d2733, #111827);
+  color: #fff;  
+    min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+/* 
+body {
+  min-height: 100vh;
+  background: #0b0d15;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+} */
+
+/* Animated Border Card */
+@property --angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+.border-animated-card {
+  position: relative;
+  padding: 2px; /* Just the border thickness */
+  border-radius: 16px;
+  background: conic-gradient(from var(--angle), #ff4545, #00ff99, #006aff, #ff0095, #ff4545);
+  animation: spin 3s linear infinite;
+}
+
+/* Actual content inside */
+.card-inner {
+  background: #1c1f2b;
+  border-radius: 14px; /* Slightly smaller to fit inside */
+  padding: 2rem;
+  width: 100%;
+  max-width: 800px;
+  color: #f0f0f0;
+}
+
+/* Optional: blurred glow */
+.border-animated-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: inherit;
+  filter: blur(1.5rem);
+  opacity: 0.5;
+  z-index: -1;
+}
+
+@keyframes spin {
+  from {
+    --angle: 0deg;
+  }
+  to {
+    --angle: 360deg;
+  }
+}
+
+/* Make textfields white */
+.MuiTextField-root {
+  background-color: white;
+  border-radius: 8px;
+}
+
+/* Ensure input and label text are dark inside the white box */
+.MuiInputBase-input {
+  color: #000;
+}
+
+.MuiInputLabel-root {
+  color: #555;
+}
+/* Only for Tone Select dropdown */
+#tone-label {
+  color: #555 !important; /* Label text */
+}
+
+#tone-label + .MuiOutlinedInput-root {
+  background-color: white !important;
+  border-radius: 8px !important;
+  color: black !important;
+}
+
+/* Input text inside the dropdown */
+#tone-label + .MuiOutlinedInput-root .MuiSelect-select {
+  color: black !important;
+}
+
+/* Arrow icon */
+#tone-label + .MuiOutlinedInput-root .MuiSelect-icon {
+  color: black !important;
+}
+
+.generate-button {
+  background-color: #2f3545;        /* deep gray-blue */
+  color: #ffffff;                   /* clean white text */
+  font-weight: 500;
+  font-size: 1rem;
+  border-radius: 8px;
+  padding: 0.75rem;
+  text-transform: none;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  transition: all 0.3s ease;
+  letter-spacing: 0.3px;
+}
+
+/* Hover state */
+.generate-button:hover {
+  background-color: #3b4257;        /* slightly lighter on hover */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+/* Focus state (keyboard users) */
+.generate-button:focus-visible {
+  outline: 2px solid #4b9eff;
+  outline-offset: 2px;
+}
+
+/* Disabled state */
+.generate-button.Mui-disabled {
+  background-color: #555a6b !important;
+  color: #ccc !important;
+  box-shadow: none !important;
+  cursor: not-allowed;
+}
+
+.generate-button {
+  background-color: #2f3545;
+  color: #ffffff;
+  font-weight: 500;
+  font-size: 1rem;
+  border-radius: 8px;
+  padding: 0.75rem;
+  text-transform: none;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  transition: all 0.3s ease;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Smooth hover */
+.generate-button:hover {
+  background-color: #3b4257;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+/* Button text */
+.button-text {
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+/* While loading, slide to the right */
+.generate-button.loading .button-text {
+  transform: translateX(6px);
+}
+
+/* Disabled state */
+.generate-button.Mui-disabled {
+  background-color: #555a6b !important;
+  color: #ccc !important;
+  box-shadow: none !important;
+  cursor: not-allowed;
+}
